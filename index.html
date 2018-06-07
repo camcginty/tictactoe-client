@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic Tac Toe Game</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,6 +12,50 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>Tic Tac Toe</h1>
+
+      <h3>New Player</h3>
+      <form id='sign-up-form'>
+        <input name="credentials[email]" placeholder="email" type="email">
+        <input name="credentials[password]" placeholder="password" type="password">
+        <input name="credentials[password_confirmation]" placeholder="password again" type="password">
+        <button type="submit">Sign Up</button>
+      </form>
+
+      <h3>Returning Player</h3>
+      <form id='sign-in-form'>
+        <input name="credentials[name]" placeholder="name" type="text">
+        <input name="credentials[password]" placeholder="password" type="password">
+        <button type="submit">Sign In</button>
+      </form>
+
+      <h3>New Password</h3>
+      <form id='change-password-form'>
+        <input name="passwords[old]" placeholder="old password" type="password">
+        <input name="passwords[new]" placeholder="new password" type="password">
+        <button type="submit">Change Password</button>
+      </form>
+
+      <h3>Done Playing?</h3>
+      <button id='sign-out'>Sign Out</button>
+
+      <div class="row article">
+          <div class="col-xs-4 col-md-3 box">X</div>
+          <div class="col-xs-4 col-md-3 box">O</div>
+          <div class="col-xs-4 col-md-3 box">X</div>
+        </div>
+
+      <div class="row article">
+          <div class="col-xs-4 col-md-3 box">O</div>
+          <div class="col-xs-4 col-md-3 box">X</div>
+          <div class="col-xs-4 col-md-3 box">O</div>
+        </div>
+
+      <div class="row article">
+          <div class="col-xs-4 col-md-3 box">X</div>
+          <div class="col-xs-4 col-md-3 box">O</div>
+          <div class="col-xs-4 col-md-3 box">X</div>
+        </div>
+
     </body>
 </html>
