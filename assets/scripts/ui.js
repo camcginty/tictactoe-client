@@ -6,16 +6,18 @@ const signUpSuccess = function (signUpSuccess) {
 }
 
 const signUpError = function (signUpError) {
-  $('#sign-up-form').append("That didn't work for some reason...")
+  $('#sign-up-form').append("That didn't work...")
 }
 
 const signInSuccess = function (signInSuccess) {
   console.log('signed in')
   store.user = signInSuccess.user
+  $('#sign-in-form').append('Broken!')
 }
 
 const signInError = function (signInError) {
-  console.log('did not sign in')
+  console.log("didn't sign in")
+  $('#sign-in-form').append('Welcome, Player')
 }
 
 // const changePasswordSuccess = function (changePasswordSuccess) {

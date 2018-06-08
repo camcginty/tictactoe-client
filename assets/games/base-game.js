@@ -10,14 +10,89 @@ const createPlayer = function (name, gameMarker, loggedIn, isTurn, turnNum, winR
   }
   return player
 }
-// loggedIn = Boolean, changed by onSignIn & onSignOut functions
-// turn = Boolean, changed by
-// const playerX = createPlayer(data.email, 'gameMarker', 'loggedIn', 'turn', 'winRecord')
 
-const gameboard = {
-  rowOne: ['box', 'box', 'box'],
-  rowTwo: ['box', 'box', 'box'],
-  rowThree: ['box', 'box', 'box']
+const player1 = createPlayer('Billy', 'x', true, true, 0, 0)
+const player2 = createPlayer('Jules', 'o', true, false, 0, 0)
+// onSignIn if const player = empty, assign as player1 (x)
+// onSignIn if const player = 1, assign as player2 (o)
+// onsignIn change loggedIn Boolean value to true
+
+// turn = Boolean, changed by function
+// const player1 = createPlayer(data.email, 'gameMarker', 'loggedIn', 'turn', 'winRecord')
+
+// onSignOut change loggedIn boolean value to false
+
+const gameboard = [
+  'box', 'box', 'box', 'box', 'box', 'box', 'box', 'box', 'box'
+]
+
+player1.isTurn =
+player1.turnNum === 0 || player2.turnNum === player1.turnNum ? player1.isTurn === true && player2.isTurn === false : player1.isTurn === false && player2.isTurn === true
+
+const isLegal = function () {
+  // run on the ones they click/hover over
+  for (let i = 0; i >= gameboard.length; i++) {
+    if (gameboard[i] === 'box') {
+      return true
+    } else {
+      return false
+    }
+  }
+}
+
+const makeMove = function (isLegal) {
+  if (isLegal() === true) {
+    gameboard[i] = player1.gameMarker
+  } else {
+    return 'not a legal move'
+  }
+}
+
+const checkBoard = function () {
+  if (player1.turnNum >= 3) {
+    winLose()
+} else {
+    nextTurn()
+}
+}
+
+const winLose = function () {
+  if (gameboard[0] === gameboard[1] && gameboard[0] === gameboard[2]) {
+    endGame()
+    return 'Player 1 wins'
+  } else if (gameboard[0] === gameboard[3] && gameboard[0] === gameboard[6]) {
+    return 'Player 1 wins'
+  } else if (gameboard[0] === gameboard[4] && gameboard[0] === gameboard[8]) {
+    return 'Player 1 wins'
+  } else if (gameboard[1] === gameboard[4] && gameboard[1] === gameboard[7]) {
+    return 'Player 1 wins'
+  } else if (gameboard[2] === gameboard[4] && gameboard[2] === gameboard[6]) {
+    return 'Player 1 wins'
+  } else if (gameboard[3] === gameboard[4] && gameboard[3] === gameboard[5]) {
+    return 'Player 1 wins'
+  } else if (gameboard[6] === gameboard[7] && gameboard[6] === gameboard[8]) {
+    return 'Player 1 wins'
+  } else {
+    checkTie()
+  }
+}
+
+const checkTie = gameboard.every((space) => {
+  return space !== 'box'
+})
+
+const endGame = function (checkTie) {
+  if (checkTie === true) {
+    player1.isTurn = false
+    player2.isTurn = false
+  }
+}
+
+const nextTurn = function (checkTie) {
+  if (checkTie === false) {
+    player1.turnNum++
+    player1.isTurn = false
+  }
 }
 
 // const validateMove = function () {
@@ -43,12 +118,11 @@ const gameboard = {
 //     $('.box').on('click', change)
 //   }
 // }
-// ternary statement to determine turn
-// playerX.turnNum >= 0 && playerO.turnNum === playerX.turnNum ? playerX.isTurn === true && playerO.isTurn === false : playerX.isTurn === false && playerO.isTurn === true
+
 
 // if/else statement to determine win
 //   const checkWin = function () {
-//     if (playerX.turn >= 3) {
+//     if (player1.turn >= 3) {
 //
 //     }
 // }
