@@ -15,7 +15,7 @@ const signInSuccess = function (signInSuccess) {
 }
 
 const signInError = function (signInError) {
-  console.log('not signed in')
+  console.log('did not sign in')
 }
 
 // const changePasswordSuccess = function (changePasswordSuccess) {
