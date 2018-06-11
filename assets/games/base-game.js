@@ -1,17 +1,19 @@
+'use strict'
+
+const boxNum = require('./events.js')
 
 const createPlayer = function (name, gameMarker, loggedIn, isTurn, turnNum, winRecord) {
-  const player = {
-    Email: name,
-    GameMarker: gameMarker,
-    loggedIn: loggedIn,
-    isTurn: isTurn,
-    turnNum: turnNum,
-    winRecord: winRecord
-  }
-  return player
 }
+  const player1 = {
+    name: 'Billy',
+    GameMarker: 'x',
+    loggedIn: true,
+    isTurn: true,
+    turnNum: 0,
+    winRecord: 0
+  }
 
-const player1 = createPlayer('Billy', 'x', true, true, 0, 0)
+// const player1 = createPlayer('Billy', 'x', true, true, 0, 0)
 const player2 = createPlayer('Jules', 'o', true, false, 0, 0)
 // onSignIn if const player = empty, assign as player1 (x)
 // onSignIn if const player = 1, assign as player2 (o)
@@ -22,38 +24,17 @@ const player2 = createPlayer('Jules', 'o', true, false, 0, 0)
 
 // onSignOut change loggedIn boolean value to false
 
-const gameboard = [
-  'box', 'box', 'box', 'box', 'box', 'box', 'box', 'box', 'box'
-]
+// player1.isTurn =
+// player1.turnNum === 0 || player2.turnNum === player1.turnNum ? player1.isTurn === true && player2.isTurn === false : player1.isTurn === false && player2.isTurn === true
 
-player1.isTurn =
-player1.turnNum === 0 || player2.turnNum === player1.turnNum ? player1.isTurn === true && player2.isTurn === false : player1.isTurn === false && player2.isTurn === true
-
-const isLegal = function () {
-  // run on the ones they click/hover over
-  for (let i = 0; i >= gameboard.length; i++) {
-    if (gameboard[i] === 'box') {
-      return true
-    } else {
-      return false
-    }
-  }
-}
-
-const makeMove = function (isLegal) {
-  if (isLegal() === true) {
-    gameboard[i] = player1.gameMarker
-  } else {
-    return 'not a legal move'
-  }
-}
+const gameboard = []
 
 const checkBoard = function () {
   if (player1.turnNum >= 3) {
     winLose()
-} else {
+  } else {
     nextTurn()
-}
+  }
 }
 
 const winLose = function () {
@@ -119,7 +100,6 @@ const nextTurn = function (checkTie) {
 //   }
 // }
 
-
 // if/else statement to determine win
 //   const checkWin = function () {
 //     if (player1.turn >= 3) {
@@ -127,3 +107,9 @@ const nextTurn = function (checkTie) {
 //     }
 // }
 // })
+
+module.exports = {
+  checkBoard,
+  nextTurn,
+  player1
+}
