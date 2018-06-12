@@ -1,17 +1,15 @@
 'use strict'
 
-const boxNum = require('./events.js')
-
 const createPlayer = function (name, gameMarker, loggedIn, isTurn, turnNum, winRecord) {
 }
-  const player1 = {
-    name: 'Billy',
-    GameMarker: 'x',
-    loggedIn: true,
-    isTurn: true,
-    turnNum: 0,
-    winRecord: 0
-  }
+const player1 = {
+  name: 'Billy',
+  GameMarker: 'x',
+  loggedIn: true,
+  isTurn: true,
+  turnNum: 0,
+  winRecord: 0
+}
 
 // const player1 = createPlayer('Billy', 'x', true, true, 0, 0)
 const player2 = createPlayer('Jules', 'o', true, false, 0, 0)

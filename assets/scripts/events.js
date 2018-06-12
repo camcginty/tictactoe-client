@@ -48,6 +48,6 @@ module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
-  onSignOut,
+  onSignOut
   // data
 }
