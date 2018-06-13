@@ -4,7 +4,7 @@ const store = require('./store')
 const getFormFields = require('../../lib/get-form-fields')
 const authApi = require('./api')
 const authUi = require('./ui')
-const gameLogic = require('../games/base-game')
+const gameplayEvents = require('./gameplay-events')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -20,6 +20,7 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
+  console.log(data)
 
   authApi.signIn(data)
     .then(authUi.signInSuccess)
@@ -36,6 +37,15 @@ const onChangePassword = function (event) {
     .catch(authUi.changePasswordError)
 }
 
+const onCreateGame = function (event) {
+  event.preventDefault()
+  console.log('token is', store.user.token)
+  gameplayEvents.players[0].isTurn = true
+  authApi.createGame()
+    .then(authUi.createGameSuccess)
+    .catch(authUi.createGameError)
+}
+
 const onSignOut = function (event) {
   event.preventDefault()
   console.log('sign out button')
@@ -48,6 +58,6 @@ module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
-  onSignOut
-  // data
+  onSignOut,
+  onCreateGame
 }

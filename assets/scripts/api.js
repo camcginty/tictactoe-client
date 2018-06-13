@@ -3,7 +3,6 @@ const config = require('./config.js')
 const store = require('./store')
 
 const signUp = function (data) {
-  console.log('api get')
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/sign-up',
@@ -12,7 +11,6 @@ const signUp = function (data) {
 }
 
 const signIn = function (data) {
-  console.log(data)
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/sign-in',
@@ -23,7 +21,7 @@ const signIn = function (data) {
 const changePassword = function (data) {
   return $.ajax({
     method: 'PATCH',
-    url: 'https://tic-tac-toe-wdi.herokuapp.com/change-password',
+    url: config.apiUrl + '/change-password',
     data: data,
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -32,13 +30,30 @@ const changePassword = function (data) {
 }
 
 const signOut = function () {
-  console.log('got to api file')
   return $.ajax({
     method: 'DELETE',
-    url: 'https://tic-tac-toe-wdi.herokuapp.com/sign-out',
+    url: config.apiUrl + '/sign-out',
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
+  })
+}
+
+const createGame = function () {
+  return $.ajax({
+    method: 'POST',
+    url: config.apiUrl + '/games',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const updateApi = function (data) {
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/' + store.game.id,
+    data: data
   })
 }
 
@@ -46,5 +61,7 @@ module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  updateApi,
+  createGame
 }

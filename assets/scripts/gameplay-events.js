@@ -1,10 +1,11 @@
 'use strict'
 
 const store = require('../scripts/store.js')
+const api = require('./api.js')
 
 const players = [
   {
-    name: 'player1',
+    name: 'player_x',
     email: undefined,
     gameMarker: 'X',
     loggedIn: false,
@@ -13,7 +14,7 @@ const players = [
     winRecord: 0
   },
   {
-    name: 'player2',
+    name: 'player_o',
     email: undefined,
     gameMarker: 'O',
     loggedIn: false,
@@ -23,19 +24,26 @@ const players = [
   }
 ]
 
+const updateBoard = function () {
+  if (players[0].isTurn === false && players[1].isTurn === false) {
+    store.game.data['over'] = false
+  }
+}
+
 const createPlayer = function () {
   if (players[0].email === undefined) {
     players[0].email = store.user.email
+    document.querySelector('.lfg').textContent = 'Need Another Player'
     if (players[0].loggedIn === false) {
       players[0].loggedIn = true
-      if (players[0].isTurn === false) {
-        players[0].isTurn = true
-      }
     }
   } else if (players[1].email === undefined) {
     players[1].email = store.user.email
     if (players[1].loggedIn === false) {
       players[1].loggedIn = true
+    }
+    if (players[0].isTurn === false) {
+      players[0].isTurn = true
     }
   }
 }
@@ -48,8 +56,11 @@ const playHere = function () {
       if (gameboard[this.id] === '') {
         gameboard[this.id] = 'x'
         const id = this.id
-        document.getElementById(id).textContent = 'x'
+        document.getElementById(id).textContent = 'X'
+        document.getElementById(id).value = 'x'
         console.log(gameboard)
+        updateBoard()
+        console.log(store.game)
         players[0].turnNum++
         endTurn()
       } else {
@@ -61,6 +72,7 @@ const playHere = function () {
         gameboard[this.id] = 'O'
         const id = this.id
         document.getElementById(id).textContent = 'O'
+        document.getElementById(id).value = 'x'
         console.log(gameboard)
         players[1].turnNum++
         endTurn()
@@ -107,13 +119,13 @@ const winLose = function () {
     console.log('win')
     return 'Player 1 wins'
   } else {
-    nextTurn()
+    checkTie()
   }
 }
 
 const checkTie = function () {
-  gameboard.some((space) => {
-    if (space === '') {
+  gameboard.some((index) => {
+    if (index === '') {
       nextTurn()
     }
   })
@@ -132,11 +144,14 @@ const nextTurn = function () {
 }
 
 const endGame = function () {
+  document.getElementById('game-over').value = 'true'
   players[0].isTurn = false
   players[1].isTurn = false
+  // display new game button
 }
 
 module.exports = {
   playHere,
-  createPlayer
+  createPlayer,
+  players
 }

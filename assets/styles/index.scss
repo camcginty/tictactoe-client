@@ -2,7 +2,10 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
-div .box {
+.box {
   border: solid black 2px;
   height: 100px;
+  margin: 0 auto;
+  size: 90px;
+  text-align: center;
 }

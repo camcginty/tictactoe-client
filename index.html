@@ -14,48 +14,58 @@
     <body>
       <h1>Tic Tac Toe</h1>
 
-      <h3>New Player</h3>
-      <form id='sign-up-form'>
+      <h3 class="lfg">Need Players</h3>
+
+    <div class="get-player">
+      <h3 class="get-player">New Player</h3>
+      <form class="get-player" id='sign-up-form'>
         <input name="credentials[email]" placeholder="email" type="email">
         <input name="credentials[password]" placeholder="password" type="password">
         <input name="credentials[password_confirmation]" placeholder="password again" type="password">
         <button type="submit">Sign Up</button>
       </form>
 
-      <h3>Returning Player</h3>
-      <form id='sign-in-form'>
+      <h3 class="get-player" >Returning Player</h3>
+      <form class="get-player" id='sign-in-form'>
         <input name="credentials[email]" placeholder="email" type="text">
         <input name="credentials[password]" placeholder="password" type="password">
         <button type="submit">Sign In</button>
       </form>
+    </div>
 
-      <h3>New Password</h3>
+    <div class="signed-in">
+      <h3>New Game</h3>
+      <button id='new-game'>Start a Game</button>
+
+      <h3 class="signed-in">New Password</h3>
       <form id='change-password-form'>
         <input name="passwords[old]" placeholder="old password" type="password">
         <input name="passwords[new]" placeholder="new password" type="password">
         <button type="submit">Change Password</button>
       </form>
 
-      <h3>Done Playing?</h3>
+      <h3 class="signed-in">Done Playing?</h3>
       <button id='sign-out'>Sign Out</button>
+    </div>
 
-      <div class="row article">
-          <div class="col-xs-4 col-md-3 box" id='0'>?</div>
-          <div class="col-xs-4 col-md-3 box" id='1'>?</div>
-          <div class="col-xs-4 col-md-3 box" id='2'>?</div>
-        </div>
+    <div class="row article" id="gameboard">
+        <div class="col-xs-4 col-md-3 box" id='0' data-cell-index='0' value="undefined"></div>
+        <div class="col-xs-4 col-md-3 box" id='1' data-cell-index='1' value="undefined"></div>
+        <div class="col-xs-4 col-md-3 box" id='2' data-cell-index='2' value="undefined"></div>
+      </div>
 
-      <div class="row article">
-          <div class="col-xs-4 col-md-3 box" id='3'>?</div>
-          <div class="col-xs-4 col-md-3 box" id='4'>?</div>
-          <div class="col-xs-4 col-md-3 box" id='5'>?</div>
-        </div>
+    <div class="row article">
+        <div class="col-xs-4 col-md-3 box" id='3' data-cell-index='3' value="undefined"></div>
+        <div class="col-xs-4 col-md-3 box" id='4' data-cell-index='4' value="undefined"></div>
+        <div class="col-xs-4 col-md-3 box" id='5' data-cell-index='5' value="undefined"></div>
+      </div>
 
-      <div class="row article">
-          <div class="col-xs-4 col-md-3 box" id='6'>?</div>
-          <div class="col-xs-4 col-md-3 box" id='7'>?</div>
-          <div class="col-xs-4 col-md-3 box" id='8'>?</div>
-        </div>
+    <div class="row article">
+        <div class="col-xs-4 col-md-3 box" id='6' data-cell-index='6' value="undefined"></div>
+        <div class="col-xs-4 col-md-3 box" id='7' data-cell-index='7' value="undefined"></div>
+        <div class="col-xs-4 col-md-3 box" id='8' data-cell-index='8' value="undefined"></div>
+      </div>
+      <div name="game[over]" value="false" id="game-over">
 
     </body>
 </html>
