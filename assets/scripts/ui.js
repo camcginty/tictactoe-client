@@ -51,7 +51,7 @@ const createGameSuccess = function (createGameSuccess) {
 }
 
 const newGameError = function (newGameError) {
-  $('#new-game').append('Need Players')
+  $('#new-game').append('Error creating game.')
 }
 
 module.exports = {

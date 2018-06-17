@@ -40,6 +40,7 @@ const signOut = function () {
 }
 
 const createGame = function () {
+  console.log('auth.api file')
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/games',

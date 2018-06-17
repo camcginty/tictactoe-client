@@ -10,7 +10,6 @@ const players = [
     gameMarker: 'X',
     loggedIn: false,
     isTurn: false,
-    turnNum: 0,
     winRecord: 0
   },
   {
@@ -19,21 +18,20 @@ const players = [
     gameMarker: 'O',
     loggedIn: false,
     isTurn: false,
-    turnNum: 0,
     winRecord: 0
   }
 ]
-
-const updateBoard = function () {
-  if (players[0].isTurn === false && players[1].isTurn === false) {
-    store.game.data['over'] = false
-  }
-}
+//  is this block necessary?
+// const updateBoard = function () {
+//   if (players[0].isTurn === false && players[1].isTurn === false) {
+//     store.game.data['over'] = false
+//   }
+// }
 
 const createPlayer = function () {
   if (players[0].email === undefined) {
     players[0].email = store.user.email
-    document.querySelector('.lfg').textContent = 'Need Another Player'
+    // document.querySelector('.lfg').textContent = 'Need Another Player'
     if (players[0].loggedIn === false) {
       players[0].loggedIn = true
     }
@@ -51,41 +49,36 @@ const createPlayer = function () {
 const gameboard = ['', '', '', '', '', '', '', '', '']
 
 const playHere = function () {
-  if (players[0] !== undefined && players[1] !== undefined) {
-    if (players[0].isTurn === true) {
-      if (gameboard[this.id] === '') {
-        gameboard[this.id] = 'x'
-        const id = this.id
-        document.getElementById(id).textContent = 'X'
-        document.getElementById(id).value = 'x'
-        console.log(gameboard)
-        updateBoard()
-        console.log(store.game)
-        players[0].turnNum++
-        endTurn()
-      } else {
-        console.log(false)
-        return 'not a legal move'
-      }
-    } else if (players[1].isTurn === true) {
-      if (gameboard[this.id] === '') {
-        gameboard[this.id] = 'O'
-        const id = this.id
-        document.getElementById(id).textContent = 'O'
-        document.getElementById(id).value = 'x'
-        console.log(gameboard)
-        players[1].turnNum++
-        endTurn()
-      }
+  const id = this.id
+  if (players[0].loggedIn === true && players[0].isTurn === true) {
+    console.log("logged in. player_x's turn")
+    if (isValidMove(id) === true) {
+      gameboard[this.id] = 'x'
+      document.getElementById(id).textContent = 'X'
+      // document.getElementById(id).value = 'x'
+      console.log(gameboard)
+      // updateBoard()
+      // console.log(store.game)
+      winLose()
+    }
+  } else if (players[0].loggedIn === true && players[1].isTurn === true) {
+    console.log("player_o's turn")
+    if (isValidMove(id) === true) {
+      gameboard[this.id] = 'O'
+      document.getElementById(id).textContent = 'O'
+      console.log(gameboard)
+      winLose()
     }
   }
 }
 
-const endTurn = function () {
-  if (players[0].turnNum >= 3) {
-    winLose()
-  } else {
-    nextTurn()
+const isValidMove = function (id) {
+  if (gameboard[id] === '') {
+    console.log('this is a valid move')
+    return true
+  } else if (gameboard[id] !== '') {
+    console.log('not a valid move')
+    return false
   }
 }
 
@@ -93,65 +86,74 @@ const winLose = function () {
   if (gameboard[0] !== '' && gameboard[0] === gameboard[1] && gameboard[0] === gameboard[2]) {
     endGame()
     console.log('Win')
-    return 'Player 1 wins'
   } else if (gameboard[0] !== '' && gameboard[0] === gameboard[3] && gameboard[0] === gameboard[6]) {
     endGame()
     console.log('win')
-    return 'Player 1 wins'
   } else if (gameboard[0] !== '' && gameboard[0] === gameboard[4] && gameboard[0] === gameboard[8]) {
     endGame()
     console.log('win')
-    return 'Player 1 wins'
   } else if (gameboard[1] !== '' && gameboard[1] === gameboard[4] && gameboard[1] === gameboard[7]) {
     endGame()
     console.log('win')
-    return 'Player 1 wins'
   } else if (gameboard[2] !== '' && gameboard[2] === gameboard[4] && gameboard[2] === gameboard[6]) {
     endGame()
     console.log('win')
-    return 'Player 1 wins'
   } else if (gameboard[3] !== '' && gameboard[3] === gameboard[4] && gameboard[3] === gameboard[5]) {
     endGame()
     console.log('win')
-    return 'Player 1 wins'
   } else if (gameboard[6] !== '' && gameboard[6] === gameboard[7] && gameboard[6] === gameboard[8]) {
     endGame()
     console.log('win')
-    return 'Player 1 wins'
   } else {
+    console.log('no winner yet')
     checkTie()
   }
 }
 
 const checkTie = function () {
-  gameboard.some((index) => {
-    if (index === '') {
-      nextTurn()
-    }
-  })
+  if (gameboard.every(i => i !== '')) {
+    console.log("It's a tie.")
+    endGame()
+  } else {
+    nextTurn()
+  }
 }
-// function not working correctly. doesn't change turn after.
 
 const nextTurn = function () {
   if (players[0].isTurn === true) {
     players[0].isTurn = false
     players[1].isTurn = true
-  } else if (players[1].isTurn === true) {
-    players[1].isTurn = false
+    console.log('player x turn is ' + players[0].isTurn)
+    console.log('player o turn is ' + players[1].isTurn)
+  } else if (players[0].isTurn === false) {
     players[0].isTurn = true
+    players[1].isTurn = false
+    console.log('player x turn is ' + players[0].isTurn)
+    console.log('player o turn is ' + players[1].isTurn)
   }
   console.log(players[0], players[1])
 }
 
 const endGame = function () {
+  console.log('endGame function')
   document.getElementById('game-over').value = 'true'
   players[0].isTurn = false
   players[1].isTurn = false
+  console.log('player x turn = ' + players[0].isTurn)
+  console.log('player o turn = ' + players[1].isTurn)
   // display new game button
+}
+
+const clearBoard = function () {
+  for (let i = 0; i < gameboard.length; i++) {
+    gameboard[i] = ''
+    document.getElementById(i).textContent = ''
+  }
 }
 
 module.exports = {
   playHere,
   createPlayer,
-  players
+  players,
+  clearBoard
 }

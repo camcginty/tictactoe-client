@@ -34,8 +34,16 @@
     </div>
 
     <div class="signed-in">
+      <div id='new-game'>
       <h3>New Game</h3>
-      <button id='new-game'>Start a Game</button>
+      <button>Start a Game</button>
+    </div>
+
+    <div class="row article" id="gameboard">
+      <div class="col-xs-4 col-md-3 box" id='0' data-cell-index='0' value="undefined"></div>
+      <div class="col-xs-4 col-md-3 box" id='1' data-cell-index='1' value="undefined"></div>
+      <div class="col-xs-4 col-md-3 box" id='2' data-cell-index='2' value="undefined"></div>
+    </div>
 
     <div class="row article">
         <div class="col-xs-4 col-md-3 box" id='3' data-cell-index='3' value="undefined"></div>
@@ -47,12 +55,6 @@
         <div class="col-xs-4 col-md-3 box" id='6' data-cell-index='6' value="undefined"></div>
         <div class="col-xs-4 col-md-3 box" id='7' data-cell-index='7' value="undefined"></div>
         <div class="col-xs-4 col-md-3 box" id='8' data-cell-index='8' value="undefined"></div>
-      </div>
-
-      <div class="row article" id="gameboard">
-        <div class="col-xs-4 col-md-3 box" id='0' data-cell-index='0' value="undefined"></div>
-        <div class="col-xs-4 col-md-3 box" id='1' data-cell-index='1' value="undefined"></div>
-        <div class="col-xs-4 col-md-3 box" id='2' data-cell-index='2' value="undefined"></div>
       </div>
 
       <div name="game[over]" value="false" id="game-over">

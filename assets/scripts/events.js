@@ -40,7 +40,11 @@ const onChangePassword = function (event) {
 const onCreateGame = function (event) {
   event.preventDefault()
   console.log('token is', store.user.token)
+  gameplayEvents.players[0].loggedIn = true
   gameplayEvents.players[0].isTurn = true
+  console.log('player x logged in = ' + gameplayEvents.players[0].loggedIn)
+  console.log("player x's turn = " + gameplayEvents.players[0].isTurn)
+  gameplayEvents.clearBoard()
   authApi.createGame()
     .then(authUi.createGameSuccess)
     .catch(authUi.createGameError)

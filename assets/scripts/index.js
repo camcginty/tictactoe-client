@@ -17,3 +17,20 @@ $(() => {
   $('#new.game').on('click', gamePlayEvents.createGame)
   $('.box').on('click', gamePlayEvents.playHere)
 })
+
+// to-do:
+// making updates to api on each turn?
+// access game stats from api
+// only show relevant forms based on log-in state
+// make text feedback spot to display info and then gets hidden after time
+// change isTurn function to just keeping track of odd/even turns?
+// clear sign-in text after a specified amount of time
+
+// fixed:
+// new game button doesn't reset board to empty
+// new game text now displays next to button instead of in it
+// correctly id'ing wins again
+// delete turnNum function. unneccessary
+// changing turns correctly again
+// check tie function wokring correctly
+// console log displaying valid and invalid moves
