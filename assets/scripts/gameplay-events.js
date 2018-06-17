@@ -55,7 +55,6 @@ const playHere = function () {
     if (isValidMove(id) === true) {
       gameboard[this.id] = 'x'
       document.getElementById(id).textContent = 'X'
-      // document.getElementById(id).value = 'x'
       console.log(gameboard)
       // updateBoard()
       // console.log(store.game)

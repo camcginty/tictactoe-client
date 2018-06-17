@@ -2,10 +2,62 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+body {
+  background: #606;
+  color: #000;
+}
+
 .box {
-  border: solid black 2px;
-  height: 100px;
-  margin: 0 auto;
-  size: 90px;
+  border: solid #a3a3a3 4px;
+  font-size: 90px;
+  font-weight: bold;
+  height: 200px;
   text-align: center;
+  width: 200px;
+}
+
+ul {
+  background: #a3a3a3;
+  color: #000;
+  float: right;
+  height: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+}
+
+li {
+  color: #606;
+  display: block;
+  font-weight: bold;
+
+  .active {
+    background: #fff;
+    color: #606;
+  }
+
+  .dropdown {
+    display: inline-block;
+  }
+
+  .dropbtn {
+    display: inline-block;
+    padding: 6px;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+  }
+
+  :hover {
+    background: #fff;
+    color: #606;
+    display: block;
+  }
+}
+
+#gameboard {
+  float: clear;
 }

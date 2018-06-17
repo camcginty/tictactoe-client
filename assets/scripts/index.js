@@ -25,12 +25,9 @@ $(() => {
 // make text feedback spot to display info and then gets hidden after time
 // change isTurn function to just keeping track of odd/even turns?
 // clear sign-in text after a specified amount of time
+// make boxes not change position when screen size changes
+// get x's to be black and o's to be white
+// or
+// change box background color to white to highlight win
 
 // fixed:
-// new game button doesn't reset board to empty
-// new game text now displays next to button instead of in it
-// correctly id'ing wins again
-// delete turnNum function. unneccessary
-// changing turns correctly again
-// check tie function wokring correctly
-// console log displaying valid and invalid moves

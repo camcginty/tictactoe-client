@@ -15,30 +15,44 @@
       <h1>Would You Like to Play a Game?</h1>
 
       <!-- <h3 class="lfg">Need Players</h3> -->
-
-    <div class="get-player">
-      <h3 class="get-player">New Player</h3>
-      <form class="get-player" id='sign-up-form'>
+<nav>
+  <ul>
+    <li class="get-player dropdown">
+      <h3 class="dropbtn">New Player</h3>
+      <form class="get-player dropdown-content" id='sign-up-form'>
         <input name="credentials[email]" placeholder="email" type="email">
         <input name="credentials[password]" placeholder="password" type="password">
         <input name="credentials[password_confirmation]" placeholder="password again" type="password">
         <button type="submit">Sign Up</button>
       </form>
-
-      <h3 class="get-player" >Returning Player</h3>
-      <form class="get-player" id='sign-in-form'>
+    </li>
+    <li class="get-player dropdown">
+      <h3 class="dropbtn">Returning Player</h3>
+      <form class="get-player dropdown-content" id='sign-in-form'>
         <input name="credentials[email]" placeholder="email" type="text">
         <input name="credentials[password]" placeholder="password" type="password">
         <button type="submit">Sign In</button>
       </form>
-    </div>
+    </li>
+    <li class="signed-in dropdown" id='new-game'>
+      <h3 class="dropbtn">New Game</h3>
+      <button class="dropdown-content">Start a Game</button>
+    </li>
+    <li class="signed-in dropdown">
+    <h3 class="dropbtn">New Password</h3>
+    <form class="dropdown-content" id='change-password-form'>
+      <input name="passwords[old]" placeholder="old password" type="password">
+      <input name="passwords[new]" placeholder="new password" type="password">
+      <button type="submit">Change Password</button>
+    </form>
+  </li>
+  <li class="signed-in dropdown">
+    <h3 class="dropbtn">Done Playing?</h3>
+    <button class="dropdown-content" id='sign-out'>Sign Out</button>
+</li>
+</nav>
 
-    <div class="signed-in">
-      <div id='new-game'>
-      <h3>New Game</h3>
-      <button>Start a Game</button>
-    </div>
-
+  </div>
     <div class="row article" id="gameboard">
       <div class="col-xs-4 col-md-3 box" id='0' data-cell-index='0' value="undefined"></div>
       <div class="col-xs-4 col-md-3 box" id='1' data-cell-index='1' value="undefined"></div>
@@ -59,16 +73,6 @@
 
       <div name="game[over]" value="false" id="game-over">
 
-        <h3 class="signed-in">New Password</h3>
-        <form id='change-password-form'>
-          <input name="passwords[old]" placeholder="old password" type="password">
-          <input name="passwords[new]" placeholder="new password" type="password">
-          <button type="submit">Change Password</button>
-        </form>
-
-        <h3 class="signed-in">Done Playing?</h3>
-        <button id='sign-out'>Sign Out</button>
-      </div>
 
     </body>
 </html>
