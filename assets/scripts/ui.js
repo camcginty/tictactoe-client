@@ -18,6 +18,8 @@ const signInSuccess = function (signInSuccess) {
   console.log(store.user.id)
   $('#sign-in-form').append('Welcome, ' + store.user.email + '!')
   document.getElementById('sign-in-form').reset()
+  $('.pre-sign-in').hide()
+  $('.signed-in').show()
 //  gamePlayEvents.createPlayer()
 }
 
@@ -47,11 +49,20 @@ const signOutError = function (signOutError) {
 const createGameSuccess = function (createGameSuccess) {
   $('#new-game').append('Make a Move')
   store.game = createGameSuccess.game
-  console.log(store.game)
+  console.log('createGameSuccess game = ' + createGameSuccess.game)
 }
 
-const newGameError = function (newGameError) {
+const createGameError = function (newGameError) {
   $('#new-game').append('Error creating game.')
+}
+
+const updateGameSuccess = function () {
+  console.log('game updated')
+  console.log('ui thinks token is ' + store.token)
+}
+
+const updateGameFail = function () {
+  console.log('game update failed')
 }
 
 module.exports = {
@@ -65,5 +76,7 @@ module.exports = {
   signOutError,
   events,
   createGameSuccess,
-  newGameError
+  createGameError,
+  updateGameSuccess,
+  updateGameFail
 }

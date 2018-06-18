@@ -9,6 +9,8 @@ const gamePlayEvents = require('./gameplay-events.js')
 // require('./example')
 
 $(() => {
+  $('.pre-sign-in').show()
+  $('.signed-in').hide()
   $('#new-game').on('click', authEvents.onCreateGame)
   $('#sign-up-form').on('submit', authEvents.onSignUp)
   $('#sign-in-form').on('submit', authEvents.onSignIn)
@@ -19,15 +21,17 @@ $(() => {
 })
 
 // to-do:
-// making updates to api on each turn?
 // access game stats from api
-// only show relevant forms based on log-in state
 // make text feedback spot to display info and then gets hidden after time
-// change isTurn function to just keeping track of odd/even turns?
-// clear sign-in text after a specified amount of time
+// clear sign-in/newgame text after a specified amount of time
 // make boxes not change position when screen size changes
+// screen size changes (media query)
 // get x's to be black and o's to be white
 // or
 // change box background color to white to highlight win
 
 // fixed:
+// making updates to api on each turn
+// only show relevant forms based on log-in state
+// gameboard better centered
+// made nav bar

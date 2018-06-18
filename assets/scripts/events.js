@@ -8,10 +8,8 @@ const gameplayEvents = require('./gameplay-events')
 
 const onSignUp = function (event) {
   event.preventDefault()
-
   const data = getFormFields(event.target)
-  console.log(data)
-
+  console.log('sign-up data is ' + data)
   authApi.signUp(data)
     .then(authUi.signUpSuccess)
     .catch(authUi.signUpError)
@@ -20,8 +18,7 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
-
+  console.log('sign-in data is ' + data)
   authApi.signIn(data)
     .then(authUi.signInSuccess)
     .catch(authUi.signInError)
@@ -31,7 +28,6 @@ const onChangePassword = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   console.log('token is', store.user.token)
-
   authApi.changePassword(data)
     .then(authUi.changePasswordSuccess)
     .catch(authUi.changePasswordError)
@@ -48,6 +44,16 @@ const onCreateGame = function (event) {
   authApi.createGame()
     .then(authUi.createGameSuccess)
     .catch(authUi.createGameError)
+  console.log('store game token = ' + store.user.token)
+}
+
+const onUpdateGame = function () {
+  event.preventDefault()
+  console.log('events thinks token is ' + store.token)
+  console.log('events thinks game id is ' + store.game.id)
+  authApi.updateGame()
+    .then(authUi.updateGameSuccess)
+    .catch(authUi.updateGameFail)
 }
 
 const onSignOut = function (event) {
@@ -63,5 +69,6 @@ module.exports = {
   onSignIn,
   onChangePassword,
   onSignOut,
-  onCreateGame
+  onCreateGame,
+  onUpdateGame
 }

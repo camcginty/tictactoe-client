@@ -5,28 +5,14 @@ const api = require('./api.js')
 
 const players = [
   {
-    name: 'player_x',
-    email: undefined,
-    gameMarker: 'X',
     loggedIn: false,
-    isTurn: false,
-    winRecord: 0
+    isTurn: false
   },
   {
-    name: 'player_o',
-    email: undefined,
-    gameMarker: 'O',
     loggedIn: false,
-    isTurn: false,
-    winRecord: 0
+    isTurn: false
   }
 ]
-//  is this block necessary?
-// const updateBoard = function () {
-//   if (players[0].isTurn === false && players[1].isTurn === false) {
-//     store.game.data['over'] = false
-//   }
-// }
 
 const createPlayer = function () {
   if (players[0].email === undefined) {
@@ -46,18 +32,18 @@ const createPlayer = function () {
   }
 }
 
+let id = 0
+
 const gameboard = ['', '', '', '', '', '', '', '', '']
 
 const playHere = function () {
-  const id = this.id
+  id = this.id
+  console.log('id is now ' + id)
   if (players[0].loggedIn === true && players[0].isTurn === true) {
-    console.log("logged in. player_x's turn")
+    console.log("player_x's turn")
     if (isValidMove(id) === true) {
       gameboard[this.id] = 'x'
       document.getElementById(id).textContent = 'X'
-      console.log(gameboard)
-      // updateBoard()
-      // console.log(store.game)
       winLose()
     }
   } else if (players[0].loggedIn === true && players[1].isTurn === true) {
@@ -65,7 +51,6 @@ const playHere = function () {
     if (isValidMove(id) === true) {
       gameboard[this.id] = 'O'
       document.getElementById(id).textContent = 'O'
-      console.log(gameboard)
       winLose()
     }
   }
@@ -73,7 +58,7 @@ const playHere = function () {
 
 const isValidMove = function (id) {
   if (gameboard[id] === '') {
-    console.log('this is a valid move')
+    console.log('valid move')
     return true
   } else if (gameboard[id] !== '') {
     console.log('not a valid move')
@@ -120,6 +105,21 @@ const checkTie = function () {
 
 const nextTurn = function () {
   if (players[0].isTurn === true) {
+    const index = id
+    const value = 'x'
+    const gameOver = false
+    console.log('index = ' + index + ', value = ' + value + ', gameOver = ' + gameOver)
+    console.log('gameplay-events thinks token is ' + store.user.token)
+    api.updateGame(index, value, gameOver)
+  } else if (players[1].isTurn === true) {
+    const index = id
+    const value = 'o'
+    const gameOver = false
+    console.log('index = ' + index + ', value = ' + value + ', gameOver = ' + gameOver)
+    console.log('gameplay-events thinks token is ' + store.user.token)
+    api.updateGame(index, value, gameOver)
+  }
+  if (players[0].isTurn === true) {
     players[0].isTurn = false
     players[1].isTurn = true
     console.log('player x turn is ' + players[0].isTurn)
@@ -130,7 +130,6 @@ const nextTurn = function () {
     console.log('player x turn is ' + players[0].isTurn)
     console.log('player o turn is ' + players[1].isTurn)
   }
-  console.log(players[0], players[1])
 }
 
 const endGame = function () {
@@ -140,7 +139,17 @@ const endGame = function () {
   players[1].isTurn = false
   console.log('player x turn = ' + players[0].isTurn)
   console.log('player o turn = ' + players[1].isTurn)
-  // display new game button
+  if (players[0].isTurn === true) {
+    const index = gameboard[id]
+    const value = 'x'
+    const gameOver = false
+    api.updateGame(index, value, gameOver)
+  } else if (players[1].isTurn === true) {
+    const index = gameboard[id]
+    const value = 'o'
+    const gameOver = false
+    api.updateGame(index, value, gameOver)
+  }
 }
 
 const clearBoard = function () {
