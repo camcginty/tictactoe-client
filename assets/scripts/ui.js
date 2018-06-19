@@ -58,7 +58,6 @@ const createGameError = function (newGameError) {
 
 const updateGameSuccess = function () {
   console.log('game updated')
-  console.log('ui thinks token is ' + store.token)
 }
 
 const updateGameFail = function () {

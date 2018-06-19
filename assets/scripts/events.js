@@ -18,7 +18,6 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log('sign-in data is ' + data)
   authApi.signIn(data)
     .then(authUi.signInSuccess)
     .catch(authUi.signInError)
@@ -47,15 +46,6 @@ const onCreateGame = function (event) {
   console.log('store game token = ' + store.user.token)
 }
 
-const onUpdateGame = function () {
-  event.preventDefault()
-  console.log('events thinks token is ' + store.token)
-  console.log('events thinks game id is ' + store.game.id)
-  authApi.updateGame()
-    .then(authUi.updateGameSuccess)
-    .catch(authUi.updateGameFail)
-}
-
 const onSignOut = function (event) {
   event.preventDefault()
   console.log('sign out button')
@@ -69,6 +59,5 @@ module.exports = {
   onSignIn,
   onChangePassword,
   onSignOut,
-  onCreateGame,
-  onUpdateGame
+  onCreateGame
 }

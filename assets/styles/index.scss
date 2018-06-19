@@ -7,15 +7,23 @@ body {
   color: #000;
 }
 
+h1 {
+  text-align: right;
+}
+
 nav {
-  margin: 0 0 25px 0;
+  float: left;
+  margin: 0 10px;
 }
 
 .box {
   border: solid #a3a3a3 4px;
+  float: right;
   font-size: 90px;
   font-weight: bold;
   height: 290px;
+  margin: 0, 250px;
+  padding: 0, 250px;
   text-align: center;
   width: 290px;
 }
@@ -23,25 +31,34 @@ nav {
 ul {
   background: #a3a3a3;
   color: #000;
+  height: 100%;
   list-style-type: none;
-  margin: 0;
+  margin: 0, 50px;
   overflow: hidden;
-  padding: 0;
+  padding: 0, 50px;
+  position: fixed;
+  width: 300px;
 }
 
 li {
   color: #606;
   display: inline-block;
   font-weight: bold;
-  margin: 0;
-  padding: 0 20px;
-
-  // .active {
-  //   background: #fff;
-  //   color: #606;
-  // }
+  margin: 0, 50px;
+  padding: 0 5px;
 }
-//
-// .gameboard {
-//   margin: 0 33%;
-// }
+
+.gameboard {
+  margin: 20px, 10%;
+}
+
+@media (max-width: 1200px) {
+  .gameboard {
+    margin: 0, auto;
+  }
+
+  .box {
+    width: 200px;
+    height: 200px;
+  }
+}
