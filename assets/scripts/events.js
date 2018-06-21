@@ -49,6 +49,8 @@ const onCreateGame = function (event) {
 const onSignOut = function (event) {
   event.preventDefault()
   console.log('sign out button')
+  gameplayEvents.endGame()
+  gameplayEvents.clearBoard()
   authApi.signOut()
     .then(authUi.signOutSuccess)
     .catch(authUi.signOutError)

@@ -22,14 +22,9 @@ $(() => {
 
 // to-do:
 // access game stats from api
-// side nav bar covers gameboard
-// clear sign-in/newgame text after a specified amount of time
-// make text feedback spot to display info and then gets hidden after time
+// side nav bar covers gameboard for phone- switch to top
 // get x's to be black and o's to be white
 // or
 // change box background color to white to highlight win
 
 // fixed:
-// boxes no longer change position when screen size changes
-// added css media query to adjust gameboard margins and box sizes for smaller screens
-// moved nav bar to side

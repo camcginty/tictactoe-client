@@ -4,56 +4,69 @@ const store = require('./store')
 const events = require('./events.js')
 
 const signUpSuccess = function (signUpSuccess) {
-  $('#sign-up-form').append('You now have an account. Sign in to play.')
+  $('#info').append('You now have an account. Sign in to play.')
+  setTimeout(clearText, 2000)
   document.getElementById('sign-up-form').reset()
 }
 
 const signUpError = function (signUpError) {
-  $('#sign-up-form').append("That didn't work... Try again.")
+  $('#info').append("That didn't work... Try again.")
+  setTimeout(clearText, 2000)
   document.getElementById('sign-up-form').reset()
 }
 
 const signInSuccess = function (signInSuccess) {
   store.user = signInSuccess.user
   console.log(store.user.id)
-  $('#sign-in-form').append('Welcome, ' + store.user.email + '!')
+  document.getElementById('info').textContent = 'Welcome, ' + store.user.email + '!'
+  setTimeout(clearText, 2000)
   document.getElementById('sign-in-form').reset()
   $('.pre-sign-in').hide()
   $('.signed-in').show()
-//  gamePlayEvents.createPlayer()
 }
 
 const signInError = function (signInError) {
-  $('#sign-in-form').append('Broken!')
+  $('#info').append('Broken! Try again.')
+  setTimeout(clearText, 2000)
   document.getElementById('sign-in-form').reset()
 }
 
 const changePasswordSuccess = function (changePasswordSuccess) {
-  $('#change-password-form').append('Password changed')
+  $('#info').append('Password changed.')
+  setTimeout(clearText, 2000)
   document.getElementById('change-password-form').reset()
 }
 
 const changePasswordError = function (changePasswordError) {
-  $('#change-password-form').append("Didn't work")
+  $('#info').append("That didn't work.")
+  setTimeout(clearText, 2000)
   document.getElementById('change-password-form').reset()
 }
 
 const signOutSuccess = function (signOutSuccess) {
-  $('#sign-out-form').append('Bye. Come again!')
+  console.log('sign out success')
+  $('#info').append('Bye. Come again!')
+  setTimeout(clearText, 2000)
+  $('.signed-in').hide()
+  $('.pre-sign-in').show()
 }
 
 const signOutError = function (signOutError) {
-  $('#sign-out-form').append("Didn't work")
+  console.log('sign out fail')
+  $('#info').append("That didn't work.")
+  setTimeout(clearText, 2000)
 }
 
 const createGameSuccess = function (createGameSuccess) {
-  $('#new-game').append('Make a Move')
+  $('#info').append('Make a Move.')
+  setTimeout(clearText, 2000)
   store.game = createGameSuccess.game
   console.log('createGameSuccess game = ' + createGameSuccess.game)
 }
 
 const createGameError = function (newGameError) {
-  $('#new-game').append('Error creating game.')
+  $('#info').append('Error creating game.')
+  setTimeout(clearText, 2000)
 }
 
 const updateGameSuccess = function () {
@@ -62,6 +75,11 @@ const updateGameSuccess = function () {
 
 const updateGameFail = function () {
   console.log('game update failed')
+}
+
+const clearText = function () {
+  console.log('clear text function')
+  document.getElementById('info').textContent = ''
 }
 
 module.exports = {
