@@ -14,12 +14,12 @@
     <body>
       <h1>Would You Like to Play a Game?</h1>
 
-      <!-- <h3 class="lfg">Need Players</h3> -->
-<nav>
+<h2 id='info'></h2>
+  <nav>
   <ul>
     <li class="new-player pre-sign-in">
-      <h3 class="new-player dropdown">New Player</h3>
-      <form class="get-player dropdown-content" id='sign-up-form'>
+      <h3 class="new-player">New Player</h3>
+      <form class="get-player" id='sign-up-form'>
         <input name="credentials[email]" placeholder="email" type="email">
         <input name="credentials[password]" placeholder="password" type="password">
         <input name="credentials[password_confirmation]" placeholder="password again" type="password">
@@ -28,28 +28,31 @@
     </li>
     <li class="get-player pre-sign-in">
       <h3 class=>Returning Player</h3>
-      <form class="get-player dropdown-content" id='sign-in-form'>
+      <form class="get-player" id='sign-in-form'>
         <input name="credentials[email]" placeholder="email" type="text">
         <input name="credentials[password]" placeholder="password" type="password">
         <button type="submit">Sign In</button>
       </form>
     </li>
     <li class="signed-in" id='new-game'>
-      <h3 class=>New Game</h3>
-      <button class="dropdown-content">Start a Game</button>
+      <h3>New Game</h3>
+      <button>Start a Game</button>
+    </li>
+    <li class="signed-in" id='get-games'>
+      <h3>Game Stats</h3>
+      <button>Stats</button>
     </li>
     <li class="signed-in">
-    <li class="signed-in">
-    <h3 class=>New Password</h3>
-    <form class="dropdown-content" id='change-password-form'>
+    <h3>New Password</h3>
+    <form id='change-password-form'>
       <input name="passwords[old]" placeholder="old password" type="password">
       <input name="passwords[new]" placeholder="new password" type="password">
       <button type="submit">Change Password</button>
     </form>
   </li>
-  <li class="signed-in">
-    <h3 class=>Done Playing?</h3>
-    <button class="dropdown-content" id='sign-out'>Sign Out</button>
+  <li class="signed-in" id='sign-out'>
+    <h3>Done Playing?</h3>
+    <button>Sign Out</button>
 </li>
 </ul>
 </nav>

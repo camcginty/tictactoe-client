@@ -46,13 +46,9 @@ const playHere = function () {
       document.getElementById(id).textContent = 'X'
       winLose()
     }
-  } else if (players[0].loggedIn === true && players[1].isTurn === true) {
-    console.log("player_o's turn")
-    if (isValidMove(id) === true) {
-      gameboard[this.id] = 'O'
-      document.getElementById(id).textContent = 'O'
-      winLose()
-    }
+  } else {
+    $('#info').append("Can't play yet. Make sure you are logged in and have started a game.")
+    setTimeout(clearText, 2000)
   }
 }
 
@@ -69,25 +65,36 @@ const isValidMove = function (id) {
 const winLose = function () {
   if (gameboard[0] !== '' && gameboard[0] === gameboard[1] && gameboard[0] === gameboard[2]) {
     endGame()
-    console.log('Win')
+    $('#info').append('Congratulations on completing the game.')
+    setTimeout(clearText, 2000)
   } else if (gameboard[0] !== '' && gameboard[0] === gameboard[3] && gameboard[0] === gameboard[6]) {
     endGame()
-    console.log('win')
+    $('#info').append('Congratulations on completing the game.')
+    setTimeout(clearText, 2000)
   } else if (gameboard[0] !== '' && gameboard[0] === gameboard[4] && gameboard[0] === gameboard[8]) {
     endGame()
-    console.log('win')
+    $('#info').append('Congratulations on completing the game.')
+    setTimeout(clearText, 2000)
   } else if (gameboard[1] !== '' && gameboard[1] === gameboard[4] && gameboard[1] === gameboard[7]) {
     endGame()
-    console.log('win')
+    $('#info').append('Congratulations on completing the game.')
+    setTimeout(clearText, 2000)
   } else if (gameboard[2] !== '' && gameboard[2] === gameboard[4] && gameboard[2] === gameboard[6]) {
     endGame()
-    console.log('win')
+    $('#info').append('Congratulations on completing the game.')
+    setTimeout(clearText, 2000)
+  } else if (gameboard[2] !== '' && gameboard[2] === gameboard[5] && gameboard[2] === gameboard[8]) {
+    endGame()
+    $('#info').append('Congratulations on completing the game.')
+    setTimeout(clearText, 2000)
   } else if (gameboard[3] !== '' && gameboard[3] === gameboard[4] && gameboard[3] === gameboard[5]) {
     endGame()
-    console.log('win')
+    $('#info').append('Congratulations on completing the game.')
+    setTimeout(clearText, 2000)
   } else if (gameboard[6] !== '' && gameboard[6] === gameboard[7] && gameboard[6] === gameboard[8]) {
     endGame()
-    console.log('win')
+    $('#info').append('Congratulations on completing the game.')
+    setTimeout(clearText, 2000)
   } else {
     console.log('no winner yet')
     checkTie()
@@ -96,7 +103,8 @@ const winLose = function () {
 
 const checkTie = function () {
   if (gameboard.every(i => i !== '')) {
-    console.log("It's a tie.")
+    $('#info').append('No! You tied! Everybody loses :(')
+    setTimeout(clearText, 2000)
     endGame()
   } else {
     nextTurn()
@@ -159,9 +167,15 @@ const clearBoard = function () {
   }
 }
 
+const clearText = function () {
+  console.log('clear text function')
+  document.getElementById('info').textContent = ''
+}
+
 module.exports = {
   playHere,
   createPlayer,
   players,
-  clearBoard
+  clearBoard,
+  endGame
 }
