@@ -41,7 +41,6 @@ const signOut = function () {
 }
 
 const createGame = function () {
-  console.log('auth.api file')
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/games',
@@ -51,8 +50,20 @@ const createGame = function () {
   })
 }
 
+const getGames = function () {
+  return $.ajax({
+    method: 'GET',
+    url: config.apiUrl + 'games?over=true',
+    data: {
+      'userId': store.user.id
+    },
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 const updateGame = function (index, value, gameOver) {
-  console.log('got to api.updateGame function')
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + 'games/' + store.game.id,
@@ -79,5 +90,6 @@ module.exports = {
   changePassword,
   signOut,
   updateGame,
-  createGame
+  createGame,
+  getGames
 }

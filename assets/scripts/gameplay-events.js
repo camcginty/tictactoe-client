@@ -17,7 +17,6 @@ const players = [
 const createPlayer = function () {
   if (players[0].email === undefined) {
     players[0].email = store.user.email
-    // document.querySelector('.lfg').textContent = 'Need Another Player'
     if (players[0].loggedIn === false) {
       players[0].loggedIn = true
     }
@@ -38,73 +37,60 @@ const gameboard = ['', '', '', '', '', '', '', '', '']
 
 const playHere = function () {
   id = this.id
-  console.log('id is now ' + id)
   if (players[0].loggedIn === true && players[0].isTurn === true) {
-    console.log("player_x's turn")
     if (isValidMove(id) === true) {
       gameboard[this.id] = 'x'
       document.getElementById(id).textContent = 'X'
       winLose()
     }
+  } else if (players[0].loggedIn === true && players[1].isTurn === true) {
+    if (isValidMove(id) === true) {
+      gameboard[this.id] = 'o'
+      document.getElementById(id).textContent = 'O'
+      winLose()
+    }
   } else {
-    $('#info').append("Can't play yet. Make sure you are logged in and have started a game.")
-    setTimeout(clearText, 2000)
+    $('#info').append("Can't let you do that. Are you logged in? Have you pressed start game? Is that space already taken?")
+    setTimeout(clearText, 3000)
   }
 }
 
 const isValidMove = function (id) {
   if (gameboard[id] === '') {
-    console.log('valid move')
     return true
   } else if (gameboard[id] !== '') {
-    console.log('not a valid move')
+    $('#info').append("Can't let you do that. Are you logged in? Have you pressed start game? Is that space already taken?")
+    setTimeout(clearText, 3000)
     return false
   }
 }
 
 const winLose = function () {
   if (gameboard[0] !== '' && gameboard[0] === gameboard[1] && gameboard[0] === gameboard[2]) {
-    endGame()
-    $('#info').append('Congratulations on completing the game.')
-    setTimeout(clearText, 2000)
+    sayWinner()
   } else if (gameboard[0] !== '' && gameboard[0] === gameboard[3] && gameboard[0] === gameboard[6]) {
-    endGame()
-    $('#info').append('Congratulations on completing the game.')
-    setTimeout(clearText, 2000)
+    sayWinner()
   } else if (gameboard[0] !== '' && gameboard[0] === gameboard[4] && gameboard[0] === gameboard[8]) {
-    endGame()
-    $('#info').append('Congratulations on completing the game.')
-    setTimeout(clearText, 2000)
+    sayWinner()
   } else if (gameboard[1] !== '' && gameboard[1] === gameboard[4] && gameboard[1] === gameboard[7]) {
-    endGame()
-    $('#info').append('Congratulations on completing the game.')
-    setTimeout(clearText, 2000)
+    sayWinner()
   } else if (gameboard[2] !== '' && gameboard[2] === gameboard[4] && gameboard[2] === gameboard[6]) {
-    endGame()
-    $('#info').append('Congratulations on completing the game.')
-    setTimeout(clearText, 2000)
+    sayWinner()
   } else if (gameboard[2] !== '' && gameboard[2] === gameboard[5] && gameboard[2] === gameboard[8]) {
-    endGame()
-    $('#info').append('Congratulations on completing the game.')
-    setTimeout(clearText, 2000)
+    sayWinner()
   } else if (gameboard[3] !== '' && gameboard[3] === gameboard[4] && gameboard[3] === gameboard[5]) {
-    endGame()
-    $('#info').append('Congratulations on completing the game.')
-    setTimeout(clearText, 2000)
+    sayWinner()
   } else if (gameboard[6] !== '' && gameboard[6] === gameboard[7] && gameboard[6] === gameboard[8]) {
-    endGame()
-    $('#info').append('Congratulations on completing the game.')
-    setTimeout(clearText, 2000)
+    sayWinner()
   } else {
-    console.log('no winner yet')
     checkTie()
   }
 }
 
 const checkTie = function () {
   if (gameboard.every(i => i !== '')) {
-    $('#info').append('No! You tied! Everybody loses :(')
-    setTimeout(clearText, 2000)
+    $('#info').append('Oh no! You tied. That means the enemy wins :(')
+    setTimeout(clearText, 2500)
     endGame()
   } else {
     nextTurn()
@@ -116,48 +102,47 @@ const nextTurn = function () {
     const index = id
     const value = 'x'
     const gameOver = false
-    console.log('index = ' + index + ', value = ' + value + ', gameOver = ' + gameOver)
-    console.log('gameplay-events thinks token is ' + store.user.token)
     api.updateGame(index, value, gameOver)
   } else if (players[1].isTurn === true) {
     const index = id
     const value = 'o'
     const gameOver = false
-    console.log('index = ' + index + ', value = ' + value + ', gameOver = ' + gameOver)
-    console.log('gameplay-events thinks token is ' + store.user.token)
     api.updateGame(index, value, gameOver)
   }
   if (players[0].isTurn === true) {
     players[0].isTurn = false
     players[1].isTurn = true
-    console.log('player x turn is ' + players[0].isTurn)
-    console.log('player o turn is ' + players[1].isTurn)
   } else if (players[0].isTurn === false) {
     players[0].isTurn = true
     players[1].isTurn = false
-    console.log('player x turn is ' + players[0].isTurn)
-    console.log('player o turn is ' + players[1].isTurn)
   }
 }
 
+const sayWinner = function () {
+  if (players[0].isTurn === true) {
+    $('#info').append("The X's saved the princess!")
+    setTimeout(clearText, 2500)
+  } else if (players[1].isTurn === true) {
+    $('#info').append("The O's saved the princess!")
+    setTimeout(clearText, 2500)
+  }
+  endGame()
+}
+
 const endGame = function () {
-  console.log('endGame function')
-  document.getElementById('game-over').value = 'true'
-  players[0].isTurn = false
-  players[1].isTurn = false
-  console.log('player x turn = ' + players[0].isTurn)
-  console.log('player o turn = ' + players[1].isTurn)
   if (players[0].isTurn === true) {
     const index = gameboard[id]
     const value = 'x'
-    const gameOver = false
+    const gameOver = true
     api.updateGame(index, value, gameOver)
   } else if (players[1].isTurn === true) {
     const index = gameboard[id]
     const value = 'o'
-    const gameOver = false
+    const gameOver = true
     api.updateGame(index, value, gameOver)
   }
+  players[0].isTurn = false
+  players[1].isTurn = false
 }
 
 const clearBoard = function () {
@@ -168,7 +153,6 @@ const clearBoard = function () {
 }
 
 const clearText = function () {
-  console.log('clear text function')
   document.getElementById('info').textContent = ''
 }
 

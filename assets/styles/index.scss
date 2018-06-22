@@ -8,6 +8,7 @@ body {
 }
 
 h1 {
+  margin-right: 20px;
   padding: 10px;
   text-align: right;
 }
@@ -28,7 +29,7 @@ nav {
 }
 
 .row {
-  margin-right: 1%;
+  margin-right: 10%;
 }
 
 .box {
@@ -36,16 +37,19 @@ nav {
   float: right;
   font-size: 150px;
   font-weight: bold;
-  height: 290px;
-  margin: 0, 250px;
-  padding: 0, 250px;
+  height: 250px;
+  margin: 0;
+  padding: 0;
   text-align: center;
   width: 290px;
 }
 
+#1 {
+  color: #000;
+}
+
 ul {
   background: #a3a3a3;
-  color: #000;
   height: 100%;
   list-style-type: none;
   margin: 0, 50px;
@@ -86,6 +90,33 @@ li {
   }
 }
 
-@media (max-width: 700px) {
-  // nav bar moves to top;
-}
+// @media (max-width: 700px) {
+//   nav {
+//     float: none;
+//     height: 10%;
+//     margin: 0;
+//   }
+//
+//   ul {
+//     height: 10%;
+//     list-style-type: none;
+//     margin: 0;
+//     overflow: hidden;
+//     padding: 0;
+//     position: fixed;
+//     width: 100%;
+//   }
+//
+//   li {
+//     font-size: 10px;
+//   }
+//
+//   h1 {
+//     font-size: -50%;
+//     margin: 3px;
+//   }
+//
+//   h3 {
+//     font-size: -50%;
+//   }
+// }
