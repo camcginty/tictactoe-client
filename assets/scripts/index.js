@@ -17,14 +17,6 @@ $(() => {
   $('#change-password-form').on('submit', authEvents.onChangePassword)
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#new.game').on('click', gamePlayEvents.createGame)
+  $('#get-games').on('click', authEvents.onGetGames)
   $('.box').on('click', gamePlayEvents.playHere)
 })
-
-// to-do:
-// access game stats from api
-// side nav bar covers gameboard for phone- switch to top
-// get x's to be black and o's to be white
-// or
-// change box background color to white to highlight win
-
-// fixed:
