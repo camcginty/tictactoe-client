@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic Tac Toe Game</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+
+      <h1>Would You Like to Play a Game?</h1>
+
+      <h2 id='info'></h2>
+
+  <nav>
+  <ul>
+    <li class="new-player pre-sign-in">
+      <h3 class="new-player">New Player</h3>
+      <form class="get-player" id='sign-up-form'>
+        <input name="credentials[email]" placeholder="email" type="email">
+        <input name="credentials[password]" placeholder="password" type="password">
+        <input name="credentials[password_confirmation]" placeholder="password again" type="password">
+        <button type="submit">Sign Up</button>
+      </form>
+    </li>
+    <li class="get-player pre-sign-in">
+      <h3>Returning Player</h3>
+      <form class="get-player" id='sign-in-form'>
+        <input name="credentials[email]" placeholder="email" type="text">
+        <input name="credentials[password]" placeholder="password" type="password">
+        <button type="submit">Sign In</button>
+      </form>
+    </li>
+    <li class="signed-in" id='new-game'>
+      <h3>New Game</h3>
+      <button>Start a Game</button>
+    </li>
+    <li class="signed-in" id='get-games'>
+      <h3>Game Stats</h3>
+      <button>Stats</button>
+    </li>
+    <li class="signed-in">
+    <h3>New Password</h3>
+    <form id='change-password-form'>
+      <input name="passwords[old]" placeholder="old password" type="password">
+      <input name="passwords[new]" placeholder="new password" type="password">
+      <button type="submit">Change Password</button>
+    </form>
+  </li>
+  <li class="signed-in" id='sign-out'>
+    <h3>Done Playing?</h3>
+    <button>Sign Out</button>
+</li>
+</ul>
+</nav>
+
+<div class="gameboard">
+    <div class="row">
+      <div class="col-xs-4 col-md-3 box" id='0' data-cell-index='0' value="undefined"></div>
+      <div class="col-xs-4 col-md-3 box" id='1' data-cell-index='1' value="undefined"></div>
+      <div class="col-xs-4 col-md-3 box" id='2' data-cell-index='2' value="undefined"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4 col-md-3 box" id='3' data-cell-index='3' value="undefined"></div>
+        <div class="col-xs-4 col-md-3 box" id='4' data-cell-index='4' value="undefined"></div>
+        <div class="col-xs-4 col-md-3 box" id='5' data-cell-index='5' value="undefined"></div>
+      </div>
+
+    <div class="row">
+        <div class="col-xs-4 col-md-3 box" id='6' data-cell-index='6' value="undefined"></div>
+        <div class="col-xs-4 col-md-3 box" id='7' data-cell-index='7' value="undefined"></div>
+        <div class="col-xs-4 col-md-3 box" id='8' data-cell-index='8' value="undefined"></div>
+      </div>
+    </div>
+
+    </body>
+</html>
