@@ -14,7 +14,7 @@ User stories:
 
 Wireframes for both desktop and (for future version) mobile views: https://imgur.com/gallery/Df9F5hG
 
-and how does one put their own touch on a game like tic-tac-toe? Most people won't know it, but I used the colors of the asexual pride flag.
+And how does one put their own touch on a game like tic-tac-toe? Most people won't know it, but my color scheme is based on the asexual pride flag. More noticably, I injected my sense of humor into the user feedback test.
 
 Future versions would include:
 - mobile-friendly view (include menu button to hide/show nav bar)
