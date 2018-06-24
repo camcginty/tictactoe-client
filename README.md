@@ -16,6 +16,7 @@ Wireframes for both desktop and (for future version) mobile views: https://imgur
 
 And how does one put their own touch on a game like tic-tac-toe? Most people won't know it, but my color scheme is based on the asexual pride flag. More noticably, I injected my sense of humor into the feedback text.
 
+
 Future versions would include:
 - mobile-friendly view (include menu button to hide/show nav bar)
 - local multiplayer (2 signed in users)
