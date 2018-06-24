@@ -55,7 +55,7 @@ const signOutError = function (signOutError) {
 }
 
 const createGameSuccess = function (createGameSuccess) {
-  $('#info').append('Make a Move.')
+  $('#info').append('Make a move. You are both Xs and Os.')
   setTimeout(clearText, 2500)
   store.game = createGameSuccess.game
 }
