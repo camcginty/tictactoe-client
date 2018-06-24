@@ -7,12 +7,16 @@ const signUpSuccess = function (signUpSuccess) {
   $('#info').append('You now have an account. Sign in to play.')
   setTimeout(clearText, 2500)
   document.getElementById('sign-up-form').reset()
+  document.getElementById('change-password-form').reset()
+  document.getElementById('sign-in-form').reset()
 }
 
 const signUpError = function (signUpError) {
   $('#info').append("That didn't work... Try again.")
   setTimeout(clearText, 2500)
   document.getElementById('sign-up-form').reset()
+  document.getElementById('change-password-form').reset()
+  document.getElementById('sign-in-form').reset()
 }
 
 const signInSuccess = function (signInSuccess) {
@@ -20,6 +24,8 @@ const signInSuccess = function (signInSuccess) {
   document.getElementById('info').textContent = 'Welcome, ' + store.user.email + '!'
   setTimeout(clearText, 2500)
   document.getElementById('sign-in-form').reset()
+  document.getElementById('sign-up-form').reset()
+  document.getElementById('change-password-form').reset()
   $('.pre-sign-in').hide()
   $('.signed-in').show()
 }
@@ -28,18 +34,24 @@ const signInError = function (signInError) {
   $('#info').append('Broken! Try again.')
   setTimeout(clearText, 2500)
   document.getElementById('sign-in-form').reset()
+  document.getElementById('sign-up-form').reset()
+  document.getElementById('change-password-form').reset()
 }
 
 const changePasswordSuccess = function (changePasswordSuccess) {
   $('#info').append('Password changed.')
   setTimeout(clearText, 2500)
   document.getElementById('change-password-form').reset()
+  document.getElementById('sign-up-form').reset()
+  document.getElementById('sign-in-form').reset()
 }
 
 const changePasswordError = function (changePasswordError) {
   $('#info').append("That didn't work.")
   setTimeout(clearText, 2500)
   document.getElementById('change-password-form').reset()
+  document.getElementById('sign-up-form').reset()
+  document.getElementById('sign-in-form').reset()
 }
 
 const signOutSuccess = function (signOutSuccess) {
